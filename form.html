@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<title>Padre Gomez</title>
+</head>
+<body>
+  <form method="post" autocomplete="off" name="google-sheet">
+  	<center><br><br>
+         <h1>Registration Form</h1><br>
+         <table border="5">	
+          
+             <tr><td><b>Parent's Name : </b></td>
+             <td><input type="text" placeholder="Enter guardian name" name="Parent's Name"   required="" /></td>
+            </tr>
+
+            <tr><td><b>Student's Name : </b></td>
+              <td><input type="text" placeholder="Enter student name" name="Student's Name"   required="" /></td>
+             </tr>
+
+             <tr><td><b>Facebook : </b></td>
+              <td><input type="text" placeholder="Enter your Facebook" name="Facebook"   required="" /></td>
+             </tr>
+    
+
+             
+            <tr><td><b>Email : </b></td>
+            <td><input type="text" placeholder="Enter your Email" name="Email"   required="" /></td>
+            </tr>
+            <tr><td><b>Phone no. : </b></td>
+            <td><input type="number" placeholder="Enter your Phone no." name="Phone"   required="" /></td>
+            </tr>
+            <tr><td><b>Gender : </b></td>
+             <td><input type="checkbox"  name="Gender" value="male" > Male
+            <input type="checkbox"  name="Gender" value="female"  > Female<br/></td>
+             </tr>
+           
+         </table>
+         <br><br>
+         <input type="submit" name="submit" value="Submit"/>
+    </center>
+  </form>
+
+  <script type="text/javascript">
+
+
+	  const scriptURL = 'https://script.google.com/macros/s/AKfycbzoMbZvho1j1rCbpHklaLZjyks1NVvhy615QSYfcUozhiGO0MI8IjCZe0zK_TkzSUNx/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("You have successfully submitted."))
+                .catch(error => console.error('Error!', error.message))
+            })
+  </script>
+</body>
+</html>
